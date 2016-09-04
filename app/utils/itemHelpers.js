@@ -26,13 +26,19 @@ var helpers = {
 	},
 
 	deleteItem: function(id) {
-		console.log('about to axios and DELETE an item number' + id)
+		console.log('about to axios and DELETE an item number ' + id)
 		return axios({
 			method: 'delete',
-			url: apiUrl + id,
-			data: {
-				id: id
-			}
+			url: apiUrl + id
+
+		})
+	},
+
+	updateItem: function(id) {
+		console.log('about to axios and UPDATE an item status ', + id)
+		return axios({
+			method: 'put',
+			url: apiUrl + id
 		})
 	},
 

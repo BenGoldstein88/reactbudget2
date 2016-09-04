@@ -41,6 +41,19 @@ var ItemContainer = React.createClass({
 					})
 			})
 	},
+	handleUpdateItem: function(e) {
+		e.preventDefault();
+		var that = this
+		itemHelpers.updateItem(that.props.id)
+			.then(function(response) {
+				itemHelpers.getItems()
+					.then(function(getResponse) {
+						console.log("getResponse", getResponse)
+						that.props.onItemsChange(getResponse)	
+						
+					})
+			})
+	},
 	render: function() {
 		return (
 			<Item 
@@ -51,6 +64,7 @@ var ItemContainer = React.createClass({
 				id={this.props.id}
 				onDeleteItem={this.handleDeleteItem}
 				onItemsChange={this.props.onItemsChange}
+				onUpdateItem={this.handleUpdateItem}
 			/>
 		);
 	}

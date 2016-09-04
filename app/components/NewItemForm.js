@@ -29,7 +29,7 @@ var NewItemForm = React.createClass({
 						<button
 	                		className='btn btn-block btn-success'
 	                		type='submit'>
-	                  		Continue
+	                  		Create
 	              		</button>
 					</form>
 				</div>
