@@ -25,17 +25,7 @@ var ItemListContainer = React.createClass({
 		// 		})
 		// 	}.bind(this))
 	},
-	handleDeleteItem: function(id) {
-		var that = this
-		itemHelpers.deleteItem(id)
-			.then(function(response) {
-				itemHelpers.getItems()
-			})
-			.then(function(getResponse) {
-				that.props.onItemsChange(getResponse)	
-				
-			})
-	},
+
 	componentWillMount: function() {
 		// this.handleItemsChange();
 	},
@@ -50,7 +40,6 @@ var ItemListContainer = React.createClass({
 				onItemsChange={this.props.onItemsChange}
 				items={this.props.items}
 				budgeter={this.props.budgeter}
-				onDeleteItem={this.handleDeleteItem}
 			/>
 		);
 	}

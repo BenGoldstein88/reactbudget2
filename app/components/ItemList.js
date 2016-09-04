@@ -21,7 +21,6 @@ var ItemList = React.createClass({
 							description={item.description}
 							price={item.price_in_pennies}
 							active={item.active}
-							onDeleteItem={that.props.onDeleteItem}
 							onItemsChange={that.props.onItemsChange}
 						/>
 
@@ -39,7 +38,6 @@ ItemList.propTypes = {
 
 	onItemsChange: PropTypes.func.isRequired,
 	items: PropTypes.array.isRequired,
-	budgeter: PropTypes.object.isRequired,
-	onDeleteItem: PropTypes.func.isRequired
+	budgeter: PropTypes.object.isRequired
 }
 module.exports = ItemList;
