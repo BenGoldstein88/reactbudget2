@@ -6,7 +6,7 @@ var apiUrl = 'http://localhost:3000/items'
 var helpers = {
 
 	createNewItem: function(itemDetails) {
-		console.log('about to go axios it')
+		console.log('about to go axios it and POST to items')
 
 		axios({
 			method: 'post',
@@ -16,26 +16,22 @@ var helpers = {
 				description: itemDetails.description,
 				price: itemDetails.price
 			}
-		});
+		})
+			.then(function(response) {
+				console.log("Response: ", response.config.data)
+				return response.config.data
 
-		// var response = axios.post(apiUrl, {
-			// headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-			// name: itemDetails.name,
-			// description: itemDetails.description,
-			// price: itemDetails.price
-			// data: 'Hello!'
-		// })
-
-		// console.log("response: ", response)
-
-		// .then(function (response) {
-		// 	console.log("Response: ", response)
-		// }).catch(function (error) {
-		// 	console.log("Error: ", error)
-		// })
-
+			})
 		
-	}
+	},
+
+	getItems: function() {
+		console.log('about to axios it and GET the item list')
+		return axios.get(apiUrl)
+
+	}	
+
+
 }
 
 module.exports = helpers;

@@ -48,7 +48,8 @@ NewItemForm.propTypes = {
 	onUpdatePrice: PropTypes.func.isRequired,
 	price: PropTypes.number.isRequired,
 
-	onSubmitItem: PropTypes.func.isRequired
+	onSubmitItem: PropTypes.func.isRequired,
+	onItemsChange: PropTypes.func.isRequired
 	// name
 	// description
 	// cost_in_pennies

@@ -1,6 +1,7 @@
 var React = require('react');
 var NewItemForm = require('../components/NewItemForm')
 var itemHelpers = require('../utils/itemHelpers')
+var PropTypes = React.PropTypes;
 
 var NewItemFormContainer = React.createClass({
 
@@ -46,11 +47,11 @@ var NewItemFormContainer = React.createClass({
 			price: price
 		};
 
-		itemHelpers.createNewItem(itemAsJSON);
-
+		var newItem = itemHelpers.createNewItem(itemAsJSON);
+		this.props.onItemsChange();
 		// console.log("Response: ", response)
-
 	},
+
 
 
 	render: function() {
@@ -63,10 +64,15 @@ var NewItemFormContainer = React.createClass({
 				onUpdatePrice={this.handleUpdatePrice}
 				price={this.state.price}
 				onSubmitItem={this.handleSubmitItem}
+				onItemsChange={this.props.onItemsChange}
 			/>
 		);
 	}
 
 });
+
+NewItemFormContainer.propTypes = {
+	onItemsChange: PropTypes.func.isRequired
+}
 
 module.exports = NewItemFormContainer;
