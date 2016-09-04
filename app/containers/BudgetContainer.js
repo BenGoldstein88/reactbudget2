@@ -53,18 +53,25 @@ var BudgetContainer = React.createClass({
 				total += parseInt(this.state.items[i].price_in_pennies)
 		}
 		return total
-	}, 
+	},
 	updatePrettyTotals: function() {
+
+		function numberWithCommas(x) {
+	    	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		} 
+
 		var totalPennies = this.calculateTotal()
 		var totalFloat = totalPennies/100
 		var totalFloatAsCurrency = totalFloat.toFixed(2)
-		var pretty = '$' + totalFloatAsCurrency
+		var totalFloatAsCurrencyFormatted = numberWithCommas(totalFloatAsCurrency)
+		var pretty = '$' + totalFloatAsCurrencyFormatted
 
 
 		var totalMaxPennies = this.calculateMaxTotal()
 		var totalMaxFloat = totalMaxPennies/100
 		var totalMaxFloatAsCurrency = totalMaxFloat.toFixed(2)
-		var prettyMax = '$' + totalMaxFloatAsCurrency
+		var totalMaxFloatAsCurrencyFormatted = numberWithCommas(totalMaxFloatAsCurrency)
+		var prettyMax = '$' + totalMaxFloatAsCurrencyFormatted
 
 		this.setState({
 			prettyTotal: pretty,
