@@ -28,8 +28,8 @@ var BudgetContainer = React.createClass({
 		// 			budgeter: apiResponse.data.budgeter
 		// 		})
 		// 	})
-		console.log('this', this)
-		console.log('newDataItems', newData.data.items)
+		// console.log('this', this)
+		// console.log('newDataItems', newData.data.items)
 		this.setState({
 			items: newData.data.items,
 			budgeter: newData.data.budgeter

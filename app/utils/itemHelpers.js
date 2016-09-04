@@ -1,7 +1,7 @@
 var axios = require('axios');
 
 
-var apiUrl = 'http://localhost:3000/items'
+var apiUrl = 'http://localhost:3000/items/'
 
 var helpers = {
 
@@ -23,6 +23,17 @@ var helpers = {
 
 			// })
 		
+	},
+
+	deleteItem: function(id) {
+		console.log('about to axios and DELETE an item number' + id)
+		return axios({
+			method: 'delete',
+			url: apiUrl + id,
+			data: {
+				id: id
+			}
+		})
 	},
 
 	getItems: function() {

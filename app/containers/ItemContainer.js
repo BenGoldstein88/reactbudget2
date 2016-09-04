@@ -1,6 +1,7 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 var Item = require('../components/Item')
+var itemHelpers = require('../utils/itemHelpers')
 
 var ItemContainer = React.createClass({
 
@@ -27,6 +28,19 @@ var ItemContainer = React.createClass({
 		// })
 
 	},
+	handleDeleteItem: function(e) {
+		e.preventDefault();
+		var that = this
+		itemHelpers.deleteItem(that.props.id)
+			.then(function(response) {
+				itemHelpers.getItems()
+					.then(function(getResponse) {
+						console.log("getResponse", getResponse)
+						that.props.onItemsChange(getResponse)	
+						
+					})
+			})
+	},
 	render: function() {
 		return (
 			<Item 
@@ -34,6 +48,9 @@ var ItemContainer = React.createClass({
 				description={this.props.description}
 				price={this.props.price}
 				active={this.props.active}
+				id={this.props.id}
+				onDeleteItem={this.handleDeleteItem}
+				onItemsChange={this.props.onItemsChange}
 			/>
 		);
 	}
@@ -45,7 +62,9 @@ ItemContainer.propTypes = {
 	name: PropTypes.string.isRequired,
 	description: PropTypes.string.isRequired,
 	price: PropTypes.number.isRequired,
-	active: PropTypes.bool.isRequired
+	active: PropTypes.bool.isRequired,
+	id: PropTypes.number.isRequired,
+	onItemsChange: PropTypes.func.isRequired
 
 };
 
