@@ -18,7 +18,7 @@ var ItemContainer = React.createClass({
 		
 	},
 	componentWillReceiveProps: function(newProps) {
-		console.log("newProps", newProps)
+		// console.log("newProps", newProps)
 		// this.setState({
 		// 	name: newProps.name,
 		// 	description: newProps.description,

@@ -1,31 +1,32 @@
 var React = require('react');
 var ItemList = require('../components/ItemList')
 var itemHelpers = require('../utils/itemHelpers')
+var PropTypes = React.PropTypes;
 
 var ItemListContainer = React.createClass({
 
 
-	getInitialState: function() {
-		return {
-			items: [],
-			budgeter: {} 
-		};
-	},
+	// getInitialState: function() {
+	// 	return {
+	// 		items: [],
+	// 		budgeter: {} 
+	// 	};
+	// },
 	handleItemsChange: function() {
 
-		var that = this;
+		// var that = this;
 
-		itemHelpers.getItems()
-			.then(function(apiResponse) {
-				console.log('apiResponse: ', apiResponse)
-				that.setState({
-					items: apiResponse.data.items,
-					budgeter: apiResponse.data.budgeter
-				})
-			})
+		// itemHelpers.getItems()
+		// 	.then(function(apiResponse) {
+		// 		console.log('apiResponse: ', apiResponse)
+		// 		that.setState({
+		// 			items: apiResponse.data.items,
+		// 			budgeter: apiResponse.data.budgeter
+		// 		})
+		// 	}.bind(this))
 	},
 	componentWillMount: function() {
-		this.handleItemsChange();
+		// this.handleItemsChange();
 	},
 	// componentDidMount: function() {
 	// 	this.handleItemsChange();
@@ -36,12 +37,21 @@ var ItemListContainer = React.createClass({
 		return (
 			<ItemList 
 				onItemsChange={this.handleItemsChange}
-				items={this.state.items}
-				budgeter={this.state.budgeter}
+				items={this.props.items}
+				budgeter={this.props.budgeter}
 			/>
 		);
 	}
 
 });
+
+ItemListContainer.propTypes = {
+
+	items: PropTypes.array.isRequired,
+	budgeter: PropTypes.object.isRequired,
+	onItemsChange: PropTypes.func.isRequired
+
+}
+
 
 module.exports = ItemListContainer;

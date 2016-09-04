@@ -47,8 +47,17 @@ var NewItemFormContainer = React.createClass({
 			price: price
 		};
 
-		var newItem = itemHelpers.createNewItem(itemAsJSON);
-		this.props.onItemsChange();
+		var that = this;
+		itemHelpers.createNewItem(itemAsJSON)
+			.then(function(response) {
+				console.log('response', response)
+				itemHelpers.getItems()
+					.then(function(response) {
+						console.log("Get Response after update: ", response)
+						that.props.onItemsChange(response)
+					})
+				// this.props.onItemsChange()
+			})
 		// console.log("Response: ", response)
 	},
 

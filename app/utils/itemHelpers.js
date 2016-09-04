@@ -8,7 +8,7 @@ var helpers = {
 	createNewItem: function(itemDetails) {
 		console.log('about to go axios it and POST to items')
 
-		axios({
+		return axios({
 			method: 'post',
 			url: apiUrl,
 			data: {
@@ -17,11 +17,11 @@ var helpers = {
 				price: itemDetails.price
 			}
 		})
-			.then(function(response) {
-				console.log("Response: ", response.config.data)
-				return response.config.data
+			// .then(function(response) {
+			// 	console.log("Response: ", response.config.data)
+			// 	return response.config.data
 
-			})
+			// })
 		
 	},
 
