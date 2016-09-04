@@ -16,6 +16,7 @@ var BudgetHeaderContainer = React.createClass({
 		return (
 			<BudgetHeader 
 				prettyTotal={this.props.prettyTotal}
+				prettyMaxTotal={this.props.prettyMaxTotal}
 			/>
 		);
 	}
@@ -25,7 +26,8 @@ var BudgetHeaderContainer = React.createClass({
 BudgetHeaderContainer.propTypes = {
 	items: PropTypes.array.isRequired,
 	budgeter: PropTypes.object.isRequired,
-	prettyTotal: PropTypes.string.isRequired
+	prettyTotal: PropTypes.string.isRequired,
+	prettyMaxTotal: PropTypes.string.isRequired
 
 }
 

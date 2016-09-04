@@ -12,7 +12,8 @@ var Budget = React.createClass({
 		return (
 			<div>
 				<BudgetHeaderContainer
-					prettyTotal={this.props.prettyTotal} 
+					prettyTotal={this.props.prettyTotal}
+					prettyMaxTotal={this.props.prettyMaxTotal} 
 					items={this.props.items}
 					budgeter={this.props.budgeter}
 				/> 
@@ -34,7 +35,8 @@ Budget.propTypes = {
 	onItemsChange: PropTypes.func.isRequired,
 	items: PropTypes.array.isRequired,
 	budgeter: PropTypes.object.isRequired,
-	prettyTotal: PropTypes.string.isRequired
+	prettyTotal: PropTypes.string.isRequired,
+	prettyMaxTotal: PropTypes.string.isRequired
 }
 
 module.exports = Budget;

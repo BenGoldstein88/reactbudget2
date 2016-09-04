@@ -21,6 +21,7 @@ var NewItemForm = React.createClass({
 							onChange={this.props.onUpdateDescription}
 							value={this.props.description}
 						/>
+						<label> Price (in Pennies): </label>
 						<input
 							type='number'
 							onChange={this.props.onUpdatePrice}

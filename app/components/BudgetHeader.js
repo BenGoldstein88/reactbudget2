@@ -9,7 +9,7 @@ var BudgetHeader = React.createClass({
 		return (
 			<div>
 				
-				<h1>Total: {this.props.prettyTotal}</h1>
+				<h1>Total: {this.props.prettyTotal} (Max Total: {this.props.prettyMaxTotal})</h1>
 			 </div>
 			
 		);
@@ -20,7 +20,8 @@ var BudgetHeader = React.createClass({
 
 BudgetHeader.propTypes = {
 	
-	prettyTotal: PropTypes.string.isRequired
+	prettyTotal: PropTypes.string.isRequired,
+	prettyMaxTotal: PropTypes.string.isRequired
 }
 
 module.exports = BudgetHeader;

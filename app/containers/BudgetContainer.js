@@ -8,7 +8,8 @@ var BudgetContainer = React.createClass({
 		return {
 			items: [],
 			budgeter: {},
-			prettyTotal: '' 
+			prettyTotal: '',
+			prettyMaxTotal: ''
 		};
 	},
 	componentWillMount: function() {
@@ -35,25 +36,39 @@ var BudgetContainer = React.createClass({
 			items: newData.data.items,
 			budgeter: newData.data.budgeter
 		})
-		this.updatePrettyTotal()
+		this.updatePrettyTotals()
 	},
 	calculateTotal: function() {
 		var total = 0
-		console.log(this.state.items)
 		for (var i = 0; i < this.state.items.length; i++) {
-			total += parseInt(this.state.items[i].price_in_pennies)
+			if(this.state.items[i].active === true) {
+				total += parseInt(this.state.items[i].price_in_pennies)
+			}
 		}
 		return total
 	},
-	updatePrettyTotal: function() {
-		console.log("total", this.calculateTotal())
+	calculateMaxTotal: function() {
+		var total = 0
+		for (var i = 0; i < this.state.items.length; i++) {
+				total += parseInt(this.state.items[i].price_in_pennies)
+		}
+		return total
+	}, 
+	updatePrettyTotals: function() {
 		var totalPennies = this.calculateTotal()
 		var totalFloat = totalPennies/100
 		var totalFloatAsCurrency = totalFloat.toFixed(2)
 		var pretty = '$' + totalFloatAsCurrency
-		console.log('pretty', pretty)
+
+
+		var totalMaxPennies = this.calculateMaxTotal()
+		var totalMaxFloat = totalMaxPennies/100
+		var totalMaxFloatAsCurrency = totalMaxFloat.toFixed(2)
+		var prettyMax = '$' + totalMaxFloatAsCurrency
+
 		this.setState({
-			prettyTotal: pretty
+			prettyTotal: pretty,
+			prettyMaxTotal: prettyMax
 		})
 	},
 	render: function() {
@@ -64,6 +79,7 @@ var BudgetContainer = React.createClass({
 				items={this.state.items}
 				budgeter={this.state.budgeter}
 				prettyTotal={this.state.prettyTotal}
+				prettyMaxTotal={this.state.prettyMaxTotal}
 			/>
 			</div>
 			);

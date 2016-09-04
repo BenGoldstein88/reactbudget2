@@ -10,17 +10,18 @@ var Item = React.createClass({
 	                		type='submit'>
 	                  		Deactivate
 	              		</button>
+	        var active = 'success'
 		} else {
 			var button = <button
 	                		className='btn btn-block btn-warning'
 	                		type='submit'>
 	                  		Activate
 	              		</button>
-
+	        var active = 'danger'      		
 		} 
 
 		return (
-			<tr>
+			<tr className={active}>
 				<td>{this.props.name}</td>
 				<td>{this.props.description}</td>
 				<td>{this.props.price}</td>
@@ -53,7 +54,7 @@ Item.propTypes = {
 	id: PropTypes.number.isRequired,
 	onDeleteItem: PropTypes.func.isRequired,
 	onItemsChange: PropTypes.func.isRequired,
-	onUpdateitem: PropTypes.func.isRequired
+	onUpdateItem: PropTypes.func.isRequired
 }
 
 module.exports = Item;

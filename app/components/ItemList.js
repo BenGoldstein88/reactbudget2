@@ -9,7 +9,7 @@ var ItemList = React.createClass({
 	render: function() {
 	var that = this
 		return (
-			<table>
+			<table className="table table-striped table-hover">
 
 				<tbody>
 					{this.props.items.map(function(item, i) {
