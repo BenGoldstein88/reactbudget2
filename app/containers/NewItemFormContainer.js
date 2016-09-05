@@ -10,7 +10,8 @@ var NewItemFormContainer = React.createClass({
 		return {
 			name: '',
 			description: '', 
-			price: 0
+			price: 0,
+			open: false
 		};
 	},
 	handleUpdateName: function(e) {
@@ -30,6 +31,13 @@ var NewItemFormContainer = React.createClass({
 			price: e.target.value
 		})
 	},
+	handleToggleForm: function(e) {
+		e.preventDefault();
+		console.log('open', this.state.open)
+		this.setState({
+			open: !this.state.open
+		})
+	},
 	handleSubmitItem: function(e) {
 		e.preventDefault();
 		var name = this.state.name
@@ -38,7 +46,8 @@ var NewItemFormContainer = React.createClass({
 		this.setState({
 			name: '',
 			description: '', 
-			price: 0
+			price: 0,
+			open: false
 		});
 
 		var itemAsJSON = {
@@ -74,6 +83,8 @@ var NewItemFormContainer = React.createClass({
 				price={this.state.price}
 				onSubmitItem={this.handleSubmitItem}
 				onItemsChange={this.props.onItemsChange}
+				open={this.state.open}
+				onToggleForm={this.handleToggleForm}
 			/>
 		);
 	}
