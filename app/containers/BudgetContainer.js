@@ -1,6 +1,8 @@
 var React = require('react');
 var Budget = require('../components/Budget')
 var itemHelpers = require('../utils/itemHelpers')
+var Notifications = require('react-notify-toast')
+var PropTypes = React.PropTypes;
 
 var BudgetContainer = React.createClass({
 
@@ -19,19 +21,6 @@ var BudgetContainer = React.createClass({
 		}.bind(this))
 	},
 	handleItemsChange: function(newData) {
-		// var that = this;
-		// console.log('this', this)
-		// itemHelpers.getItems()
-		// 	.then(function(apiResponse) {
-		// 		console.log('apiResponse: ', apiResponse)
-		// 		console.log('that', that)
-		// 		that.setState({
-		// 			items: apiResponse.data.items,
-		// 			budgeter: apiResponse.data.budgeter
-		// 		})
-		// 	})
-		// console.log('this', this)
-		// console.log('newDataItems', newData.data.items)
 		this.setState({
 			items: newData.data.items,
 			budgeter: newData.data.budgeter
@@ -81,18 +70,23 @@ var BudgetContainer = React.createClass({
 	render: function() {
 		return (
 			<div>
-			<Budget 
-				onItemsChange={this.handleItemsChange}
-				items={this.state.items}
-				budgeter={this.state.budgeter}
-				prettyTotal={this.state.prettyTotal}
-				prettyMaxTotal={this.state.prettyMaxTotal}
-			/>
+				<Budget 
+					onItemsChange={this.handleItemsChange}
+					items={this.state.items}
+					budgeter={this.state.budgeter}
+					prettyTotal={this.state.prettyTotal}
+					prettyMaxTotal={this.state.prettyMaxTotal}
+					onFailedSubmission={this.props.onFailedSubmission}
+				/>
 			</div>
 			);
 	}
 
 });
+
+BudgetContainer.propTypes = {
+	onFailedSubmission: PropTypes.func.isRequired
+}
 
 
 

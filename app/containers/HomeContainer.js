@@ -1,9 +1,8 @@
 var React = require('react');
-var BudgetContainer = require('../containers/BudgetContainer');
 var Notifications = require('react-notify-toast');
 
+var HomeContainer = React.createClass({
 
-var Home = React.createClass({
 
 	handleFailedSubmission: function() {
 		console.log("Attempting to toast...")
@@ -13,15 +12,10 @@ var Home = React.createClass({
 	},
 	render: function() {
 		return (
-			<div>
-
-				<BudgetContainer 
-					onFailedSubmission={this.handleFailedSubmission}
-				/> 
-			</div>
+			<Home />
 		);
 	}
 
 });
 
-module.exports = Home;
+module.exports = HomeContainer;

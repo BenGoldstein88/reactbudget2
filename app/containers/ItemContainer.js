@@ -6,26 +6,10 @@ var itemHelpers = require('../utils/itemHelpers')
 var ItemContainer = React.createClass({
 
 
-	// getInitialState: function() {
-	// 	return {
-	// 		name: '',
-	// 		description: '',
-	// 		price: 0,
-	// 		active: false 
-	// 	};
-	// },
-
 	componentWillMount: function() {
 		
 	},
 	componentWillReceiveProps: function(newProps) {
-		// console.log("newProps", newProps)
-		// this.setState({
-		// 	name: newProps.name,
-		// 	description: newProps.description,
-		// 	price: newProps.price,
-		// 	active: newProps.active
-		// })
 
 	},
 	handleDeleteItem: function(e) {

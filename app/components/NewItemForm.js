@@ -53,7 +53,6 @@ var NewItemForm = React.createClass({
 });
 
 NewItemForm.propTypes = {
-	// onSubmitItem
 	onUpdateName: PropTypes.func.isRequired,
 	name: PropTypes.string.isRequired,
 	onUpdateDescription: PropTypes.func.isRequired,
@@ -64,11 +63,9 @@ NewItemForm.propTypes = {
 
 	onSubmitItem: PropTypes.func.isRequired,
 	onItemsChange: PropTypes.func.isRequired,
-	onToggleForm: PropTypes.func.isRequired
-	// name
-	// description
-	// cost_in_pennies
-	// active?
+	onToggleForm: PropTypes.func.isRequired,
+	onFailedSubmission: PropTypes.func.isRequired
+
 
 }
 

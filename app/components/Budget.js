@@ -24,6 +24,7 @@ var Budget = React.createClass({
 				/>
 				<NewItemFormContainer 
 					onItemsChange={this.props.onItemsChange}
+					onFailedSubmission={this.props.onFailedSubmission}
 				/>
 			</div>
 		);
@@ -36,7 +37,8 @@ Budget.propTypes = {
 	items: PropTypes.array.isRequired,
 	budgeter: PropTypes.object.isRequired,
 	prettyTotal: PropTypes.string.isRequired,
-	prettyMaxTotal: PropTypes.string.isRequired
+	prettyMaxTotal: PropTypes.string.isRequired,
+	onFailedSubmission: PropTypes.func.isRequired
 }
 
 module.exports = Budget;

@@ -1,6 +1,8 @@
 var React = require('react');
 var NewItemForm = require('../components/NewItemForm')
 var itemHelpers = require('../utils/itemHelpers')
+var Notifications = require('react-notify-toast')
+
 var PropTypes = React.PropTypes;
 
 var NewItemFormContainer = React.createClass({
@@ -12,6 +14,7 @@ var NewItemFormContainer = React.createClass({
 			description: '', 
 			price: 0,
 			open: false
+
 		};
 	},
 	handleUpdateName: function(e) {
@@ -65,9 +68,12 @@ var NewItemFormContainer = React.createClass({
 						console.log("Get Response after update: ", response)
 						that.props.onItemsChange(response)
 					})
-				// this.props.onItemsChange()
 			})
-		// console.log("Response: ", response)
+			.catch(function(error) {
+				console.log("Error", error)
+				// console.log("Notifications", Notifications)
+				that.props.onFailedSubmission()
+			})
 	},
 
 
@@ -85,6 +91,8 @@ var NewItemFormContainer = React.createClass({
 				onItemsChange={this.props.onItemsChange}
 				open={this.state.open}
 				onToggleForm={this.handleToggleForm}
+				onFailedSubmission={this.props.onFailedSubmission}
+				// onNotification={this.props.handleNotification}
 			/>
 		);
 	}
@@ -92,7 +100,8 @@ var NewItemFormContainer = React.createClass({
 });
 
 NewItemFormContainer.propTypes = {
-	onItemsChange: PropTypes.func.isRequired
+	onItemsChange: PropTypes.func.isRequired,
+	onFailedSubmission: PropTypes.func.isRequired
 }
 
 module.exports = NewItemFormContainer;

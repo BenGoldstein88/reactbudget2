@@ -5,13 +5,6 @@ var PropTypes = React.PropTypes
 var BudgetHeaderContainer = React.createClass({
 
 
-	// getInitialState: function() {
-	// 	return {
-	// 		prettyTotal: ''
-	// 	};
-	// },
-
-
 	render: function() {
 		return (
 			<BudgetHeader 
